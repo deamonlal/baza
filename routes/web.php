@@ -18,7 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/workers', [\App\Http\Controllers\WorkerController::class, 'index']);
-//Route::get('/show', [\App\Http\Controllers\WorkerController::class, 'show']);
 Route::resource('workers', WorkerController::class)->except('store', 'edit');
-//Route::put('/workers/update', [\App\Http\Controllers\WorkerController::class, 'update']);
