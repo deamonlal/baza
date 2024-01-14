@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\WorkerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/workers', [\App\Http\Controllers\WorkerController::class, 'index']);
-Route::get('/show', [\App\Http\Controllers\WorkerController::class, 'show']);
+//Route::get('/workers', [\App\Http\Controllers\WorkerController::class, 'index']);
+//Route::get('/show', [\App\Http\Controllers\WorkerController::class, 'show']);
+Route::resource('workers', WorkerController::class)->only('index', 'show');
