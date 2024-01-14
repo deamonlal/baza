@@ -10,7 +10,8 @@ class WorkerController extends Controller
 {
     public function index()
     {
-        return Worker::all();
+        $workers =  Worker::all();
+        return view('worker.index', compact('workers'));
     }
 
     public function show(int $id): Worker
