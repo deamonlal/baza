@@ -11,5 +11,14 @@ class Worker extends Model
 
     protected $table = 'workers';
 
+    protected $fillable = [
+        'name',
+        'surname',
+        'email',
+        'age',
+        'description',
+        'is_married',
+    ];
+
     protected $guarded = false;
 }
