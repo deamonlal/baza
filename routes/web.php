@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('workers', WorkerController::class)->except('store', 'edit');
+Route::resource('workers', WorkerController::class)->except('edit');
