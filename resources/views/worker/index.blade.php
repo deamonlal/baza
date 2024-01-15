@@ -8,23 +8,28 @@
     <title>Document</title>
 </head>
 <body>
-<h2>Index page - workers</h2>
+    <h2>Index page - workers</h2>
+    <br>
 
-<div>
-    @foreach($workers as $worker)
-        <div>
-            <div>Name: {{ $worker->name }}</div>
-            <div>Surname: {{ $worker->surname }}</div>
-            <div>Email: {{ $worker->email }}</div>
-            <div>Age: {{ $worker->age }}</div>
-            <div>Description: {{ $worker->description }}</div>
-            <div>Is married: {{ $worker->is_married }}</div>
+    <div>
+        <a href="{{ route('workers.create') }}">Создать worker'а</a>
+    </div>
+    <br>
+    <div>
+        @foreach($workers as $worker)
             <div>
-                <a href="{{ route('workers.show', $worker->id) }}">Посмотреть</a>;
+                <div>Name: {{ $worker->name }}</div>
+                <div>Surname: {{ $worker->surname }}</div>
+                <div>Email: {{ $worker->email }}</div>
+                <div>Age: {{ $worker->age }}</div>
+                <div>Description: {{ $worker->description }}</div>
+                <div>Is married: {{ $worker->is_married }}</div>
+                <div>
+                    <a href="{{ route('workers.show', $worker->id) }}">Посмотреть</a>
+                </div>
             </div>
-        </div>
-        <hr>
-    @endforeach
-</div>
+            <hr>
+        @endforeach
+    </div>
 </body>
 </html>
