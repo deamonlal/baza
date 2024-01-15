@@ -17,6 +17,7 @@
     <br>
     <div>
         @foreach($workers as $worker)
+            <hr>
             <div>
                 <div>Name: {{ $worker->name }}</div>
                 <div>Surname: {{ $worker->surname }}</div>
@@ -27,8 +28,10 @@
                 <div>
                     <a href="{{ route('workers.show', $worker->id) }}">Посмотреть</a>
                 </div>
+                <div>
+                    <a href="{{ route('workers.edit', $worker->id) }}">Редактировать</a>
+                </div>
             </div>
-            <hr>
         @endforeach
     </div>
 </body>

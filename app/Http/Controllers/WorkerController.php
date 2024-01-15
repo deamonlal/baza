@@ -35,16 +35,18 @@ class WorkerController extends Controller
         return redirect()->route('workers.index');
     }
 
-    public function update(int $id): string
+    public function edit(Worker $worker): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $worker = Worker::first();
+        return view('worker.edit', compact('worker'));
+    }
 
-        $worker->update([
-            'name' => 'Deamon',
-            'surname' => 'Barbarian'
-        ]);
+    public function update(StoreRequest $request, Worker $worker): \Illuminate\Http\RedirectResponse
+    {
+        $data = $request->validated();
+        $data['is_married'] = isset($data['is_married']);
+        $worker->update($data);
 
-        return "Worker $worker->name updated successfully";
+        return redirect()->route('workers.index');
     }
 
     public function destroy(int $id): string
