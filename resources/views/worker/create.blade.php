@@ -8,7 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-    Create page
+    <div>
+        <a href="{{ route('workers.index') }}">Вернуться назад</a>
+    </div>
+    <h3>Create page</h3>
     <div>
         <hr>
         <div>
