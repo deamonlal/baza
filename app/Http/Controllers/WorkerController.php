@@ -21,12 +21,12 @@ class WorkerController extends Controller
         return view('worker.show', compact('worker'));
     }
 
-    public function create()
+    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('worker.create');
     }
 
-    public function store(StoreRequest $request)
+    public function store(StoreRequest $request): \Illuminate\Http\RedirectResponse
     {
         $data = $request->validated();
         $data['is_married'] = isset($data['is_married']);
