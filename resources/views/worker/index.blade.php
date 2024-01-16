@@ -40,6 +40,18 @@
                 </div>
             </div>
         @endforeach
+        <hr>
+        <div class="navigate">
+            {{ $workers->links() }}
+        </div>
     </div>
+    <style>
+        .navigate svg {
+            width: 20px;
+        }
+        .navigate {
+            margin-top: 2%;
+        }
+    </style>
 </body>
 </html>
