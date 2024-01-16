@@ -19,20 +19,23 @@
                 @csrf
                 @method('Patch')
                 <div style="margin-bottom: 15px;">
-                    <input type="text" name="name" value="{{ $worker->name }}" placeholder="Имя">
+                    <input type="text" name="name" value="{{ old('name') ?? $worker->name }}" placeholder="Имя">
+                    @error('name')<div>{{ $message }}</div>@enderror
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <input type="text" name="surname" value="{{ $worker->surname }}" placeholder="Фамилия">
+                    <input type="text" name="surname" value="{{ old('surname') ?? $worker->surname }}" placeholder="Фамилия">
+                    @error('surname')<div>{{ $message }}</div>@enderror
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <input type="email" name="email" value="{{ $worker->email }}" placeholder="Емейл">
+                    <input type="email" name="email" value="{{ old('email') ?? $worker->email }}" placeholder="Емейл">
+                    @error('email')<div>{{ $message }}</div>@enderror
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <input type="number" name="age" value="{{ $worker->age }}" placeholder="Возраст">
+                    <input type="number" name="age" value="{{ old('age') ?? $worker->age }}" placeholder="Возраст">
                 </div>
-                <textarea name="description" placeholder="Описание"> {{ $worker->description }}</textarea>
+                <textarea name="description" placeholder="Описание"> {{ old('description') ?? $worker->description }}</textarea>
                 <div style="margin-bottom: 15px;">
-                    <input id="married" type="checkbox" name="is_married" value="{{ $worker->is_married ? 'checked' : '' }}">
+                    <input id="married" type="checkbox" name="is_married" {{ (old('is_married') ?? $worker->is_married) ? 'checked' : '' }}>
                     <label for="married">Женат(а)</label>
                 </div>
                 <div style="margin-bottom: 15px;">
