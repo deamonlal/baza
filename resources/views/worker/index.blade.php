@@ -24,12 +24,19 @@
                 <div>Email: {{ $worker->email }}</div>
                 <div>Age: {{ $worker->age }}</div>
                 <div>Description: {{ $worker->description }}</div>
-                <div>Is married: {{ $worker->is_married }}</div>
+                <div>Is married: {{ $worker->is_married ? 'YES' : 'NO' }}</div>
                 <div>
                     <a href="{{ route('workers.show', $worker->id) }}">Посмотреть</a>
                 </div>
                 <div>
                     <a href="{{ route('workers.edit', $worker->id) }}">Редактировать</a>
+                </div>
+                <div>
+                    <form action="{{ route('workers.destroy', $worker->id) }}" method="Post">
+                        @csrf
+                        @method('Delete')
+                        <input type="submit" value="Удалить">
+                    </form>
                 </div>
             </div>
         @endforeach
