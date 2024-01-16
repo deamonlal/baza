@@ -49,14 +49,9 @@ class WorkerController extends Controller
         return redirect()->route('workers.index');
     }
 
-    public function destroy(int $id): string
+    public function destroy(Worker $worker): string
     {
-        $worker = Worker::find($id);
-        if(!is_null($worker)) {
-            $workerName = $worker->name;
-            $worker->delete();
-            return "Worker $workerName was deleted successfully";
-        }
-        return "Worker with id = $id was not found";
+        $worker->delete();
+        return redirect()->route('workers.index');
     }
 }
