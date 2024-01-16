@@ -30,4 +30,18 @@ class UpdateRequest extends FormRequest
             'is_married' => 'nullable|string'
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Это поле необходимо заполнить',
+            'name.string' => 'Это поле должно быть строкой',
+            'surname.required' => 'Это поле необходимо заполнить',
+            'surname.string' => 'Это поле должно быть строкой',
+            'email.required' => 'Это поле необходимо заполнить',
+            'email.email' => 'Это поле должно быть типа email',
+            'age.integer' => 'Это поле должно быть целочисленного типа',
+            'description.string' => 'Это поле должно быть строкой',
+        ];
+    }
 }
