@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,11 +30,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Worker whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Worker whereSurname($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Worker whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Worker filter(\App\Http\Filters\FilterInterface $filter)
  * @mixin \Eloquent
  */
 class Worker extends Model
 {
     use HasFactory;
+    use Filterable;
 
     protected $table = 'workers';
 

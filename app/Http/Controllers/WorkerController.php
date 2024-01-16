@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Filters\WorkerFilter;
+use App\Http\Requests\Worker\IndexFilterRequest;
 use App\Http\Requests\Worker\StoreRequest;
 use App\Models\Worker;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class WorkerController extends Controller
 {
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    /**
+     * @throws BindingResolutionException
+     */
+    public function index(IndexFilterRequest $request): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $workers =  Worker::paginate(2);
+        $data = $request->validated();
+        $filter = app()->make(WorkerFilter::class, ['queryParams' => array_filter($data)]);
+        $workers =  Worker::filter($filter)->paginate(3);
+//        dd($workers);
         return view('worker.index', compact('workers'));
     }
 
