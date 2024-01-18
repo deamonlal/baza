@@ -31,6 +31,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Worker whereSurname($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Worker whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Worker filter(\App\Http\Filters\FilterInterface $filter)
+ * @property int|null $profession_id
+ * @property-read \App\Models\Profession|null $profession
+ * @property-read \App\Models\Profile|null $profile
+ * @method static \Illuminate\Database\Eloquent\Builder|Worker whereProfessionId($value)
  * @mixin \Eloquent
  */
 class Worker extends Model
@@ -50,4 +54,14 @@ class Worker extends Model
     ];
 
     protected $guarded = false;
+
+    public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Profile::class, 'worker_id', 'id');
+    }
+
+    public function profession(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Profession::class, 'profession_id', 'id');
+    }
 }
