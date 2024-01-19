@@ -48,6 +48,11 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Worker whereProfessionId($value)
  * @property-read Collection<int, Project> $projects
  * @property-read int|null $projects_count
+ * @property-read \App\Models\Avatar|null $avatar
+ * @property-read Collection<int, \App\Models\Review> $review
+ * @property-read int|null $review_count
+ * @property-read Collection<int, \App\Models\Tag> $tags
+ * @property-read int|null $tags_count
  * @mixin Eloquent
  */
 class Worker extends Model

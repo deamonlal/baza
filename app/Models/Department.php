@@ -24,6 +24,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Department whereId($value)
  * @method static Builder|Department whereTitle($value)
  * @method static Builder|Department whereUpdatedAt($value)
+ * @property-read \App\Models\Worker|null $boss
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Worker> $workers
+ * @property-read int|null $workers_count
  * @mixin Eloquent
  */
 class Department extends Model

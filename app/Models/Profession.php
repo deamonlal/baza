@@ -31,6 +31,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Profession whereUpdatedAt($value)
  * @property int $department_id
  * @method static Builder|Profession whereDepartmentId($value)
+ * @property-read \App\Models\Department $department
  * @mixin Eloquent
  */
 class Profession extends Model
