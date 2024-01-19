@@ -64,4 +64,9 @@ class Worker extends Model
     {
         return $this->belongsTo(Profession::class, 'profession_id', 'id');
     }
+
+    public function projects(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Project::class, 'project_workers', 'worker_id' , 'project_id');
+    }
 }
