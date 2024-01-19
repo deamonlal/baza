@@ -37,7 +37,12 @@ class Department extends Model
 
     public function boss(): \Illuminate\Database\Eloquent\Relations\HasOneThrough
     {
-    return $this->hasOneThrough(Worker::class, Profession::class, 'department_id', 'profession_id', 'id', 'id')
+        return $this->hasOneThrough(Worker::class, Profession::class, 'department_id', 'profession_id', 'id', 'id')
         ->where('position_id', self::BOSS);
+    }
+
+    public function workers(): \Illuminate\Database\Eloquent\Relations\HasManyThrough
+    {
+        return $this->hasManyThrough(Worker::class, Profession::class, 'department_id', 'profession_id', 'id', 'id');
     }
 }
