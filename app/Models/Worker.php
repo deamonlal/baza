@@ -35,6 +35,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Profession|null $profession
  * @property-read \App\Models\Profile|null $profile
  * @method static \Illuminate\Database\Eloquent\Builder|Worker whereProfessionId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Project> $projects
+ * @property-read int|null $projects_count
  * @mixin \Eloquent
  */
 class Worker extends Model
