@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Profession whereResponsibilities($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profession whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profession whereUpdatedAt($value)
+ * @property int $department_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Profession whereDepartmentId($value)
  * @mixin \Eloquent
  */
 class Profession extends Model
@@ -41,5 +43,10 @@ class Profession extends Model
     public function workers(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Worker::class, 'profession_id', 'id');
+    }
+
+    public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Department::class, 'department_id', 'id');
     }
 }
