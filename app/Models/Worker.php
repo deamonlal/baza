@@ -71,4 +71,9 @@ class Worker extends Model
     {
         return $this->belongsToMany(Project::class, 'project_workers', 'worker_id' , 'project_id');
     }
+
+    public function avatar(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    {
+        return $this->morphOne(Avatar::class, 'avatarable');
+    }
 }
