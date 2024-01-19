@@ -28,17 +28,17 @@ class WorkerFilter extends AbstractFilter
 
     public function name(Builder $builder, $value): void
     {
-        $builder->where('name', 'like', "%{$value}%");
+        $builder->where('name', 'like', "%$value%");
     }
 
     public function surname(Builder $builder, $value): void
     {
-        $builder->where('surname', 'like', "%{$value}%");
+        $builder->where('surname', 'like', "%$value%");
     }
 
     public function email(Builder $builder, $value): void
     {
-        $builder->where('email', 'like', "%{$value}%");
+        $builder->where('email', 'like', "%$value%");
     }
 
     public function from(Builder $builder, $value): void
@@ -53,7 +53,7 @@ class WorkerFilter extends AbstractFilter
 
     public function description(Builder $builder, $value): void
     {
-        $builder->where('description', 'like', "%{$value}%");
+        $builder->where('description', 'like', "%$value%");
     }
 
     public function isMarried(Builder $builder, $value): void

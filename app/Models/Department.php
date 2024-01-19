@@ -2,24 +2,29 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Department
  *
  * @property int $id
  * @property string $title
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Department newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Department newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Department query()
- * @method static \Illuminate\Database\Eloquent\Builder|Department whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Department whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Department whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Department whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|Department newModelQuery()
+ * @method static Builder|Department newQuery()
+ * @method static Builder|Department query()
+ * @method static Builder|Department whereCreatedAt($value)
+ * @method static Builder|Department whereId($value)
+ * @method static Builder|Department whereTitle($value)
+ * @method static Builder|Department whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class Department extends Model
 {
@@ -35,13 +40,13 @@ class Department extends Model
 
     protected $guarded = false;
 
-    public function boss(): \Illuminate\Database\Eloquent\Relations\HasOneThrough
+    public function boss(): HasOneThrough
     {
         return $this->hasOneThrough(Worker::class, Profession::class, 'department_id', 'profession_id', 'id', 'id')
         ->where('position_id', self::BOSS);
     }
 
-    public function workers(): \Illuminate\Database\Eloquent\Relations\HasManyThrough
+    public function workers(): HasManyThrough
     {
         return $this->hasManyThrough(Worker::class, Profession::class, 'department_id', 'profession_id', 'id', 'id');
     }

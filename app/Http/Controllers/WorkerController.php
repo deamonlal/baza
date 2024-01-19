@@ -7,7 +7,11 @@ use App\Http\Requests\Worker\IndexFilterRequest;
 use App\Http\Requests\Worker\StoreRequest;
 use App\Models\Worker;
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class WorkerController extends Controller
@@ -15,7 +19,7 @@ class WorkerController extends Controller
     /**
      * @throws BindingResolutionException
      */
-    public function index(IndexFilterRequest $request): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function index(IndexFilterRequest $request): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $data = $request->validated();
         $filter = app()->make(WorkerFilter::class, ['queryParams' => array_filter($data)]);
@@ -24,18 +28,18 @@ class WorkerController extends Controller
         return view('worker.index', compact('workers'));
     }
 
-    public function show(Worker $worker): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function show(Worker $worker): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         //$worker = Worker::find($id);
         return view('worker.show', compact('worker'));
     }
 
-    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function create(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('worker.create');
     }
 
-    public function store(StoreRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(StoreRequest $request): RedirectResponse
     {
         $data = $request->validated();
         $data['is_married'] = isset($data['is_married']);
@@ -44,12 +48,12 @@ class WorkerController extends Controller
         return redirect()->route('workers.index');
     }
 
-    public function edit(Worker $worker): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function edit(Worker $worker): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('worker.edit', compact('worker'));
     }
 
-    public function update(StoreRequest $request, Worker $worker): \Illuminate\Http\RedirectResponse
+    public function update(StoreRequest $request, Worker $worker): RedirectResponse
     {
         $data = $request->validated();
         $data['is_married'] = isset($data['is_married']);

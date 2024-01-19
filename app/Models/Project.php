@@ -2,26 +2,31 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Project
  *
  * @property int $id
  * @property string $title
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Worker> $workers
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection<int, Worker> $workers
  * @property-read int|null $workers_count
- * @method static \Illuminate\Database\Eloquent\Builder|Project newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Project newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Project query()
- * @method static \Illuminate\Database\Eloquent\Builder|Project whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Project whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Project whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Project whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @method static Builder|Project newModelQuery()
+ * @method static Builder|Project newQuery()
+ * @method static Builder|Project query()
+ * @method static Builder|Project whereCreatedAt($value)
+ * @method static Builder|Project whereId($value)
+ * @method static Builder|Project whereTitle($value)
+ * @method static Builder|Project whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class Project extends Model
 {
@@ -35,7 +40,7 @@ class Project extends Model
 
     protected $guarded = false;
 
-    public function workers(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function workers(): BelongsToMany
     {
         return $this->belongsToMany(Worker::class, 'project_workers', 'project_id' , 'worker_id');
     }
