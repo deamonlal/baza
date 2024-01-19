@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('workers_id')->index()->constrained();
+            $table->foreignId('workers_id')->index()->constrained('workers');
             $table->string('address')->nullable();
             $table->string('experience')->nullable();
             $table->date('finished_study_at')->nullable();
