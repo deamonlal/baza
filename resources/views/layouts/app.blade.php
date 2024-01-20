@@ -29,7 +29,8 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+{{--                {{ $slot }}--}}
+                @include('layout.main')
             </main>
         </div>
     </body>
