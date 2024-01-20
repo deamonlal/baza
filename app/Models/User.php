@@ -15,6 +15,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Sanctum\PersonalAccessToken;
+use phpDocumentor\Reflection\Types\ArrayKey;
 
 /**
  * App\Models\User
@@ -49,6 +50,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const ROLE_GUEST = 1;
+    const ROLE_ADMIN = 2;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -79,4 +83,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public static function getRoles(): array
+    {
+        return [
+            self::ROLE_GUEST => 'guest',
+            self::ROLE_ADMIN => 'admin',
+        ];
+    }
 }

@@ -17,9 +17,9 @@ use App\Http\Controllers\WorkerController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::resource('workers', WorkerController::class)->middleware(['auth', 'verified']);
+Route::resource('workers', WorkerController::class)->middleware(['auth', 'isAdmin']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
