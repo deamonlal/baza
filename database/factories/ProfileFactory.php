@@ -18,7 +18,7 @@ class ProfileFactory extends Factory
     public function definition(): array
     {
         return [
-            'workers_id' => Worker::factory()->create(),
+            'worker_id' => Worker::factory()->create(),
             'address' => fake()->address,
             'experience' => fake()->numberBetween(0,20),
             'finished_study_at' => fake()->date,

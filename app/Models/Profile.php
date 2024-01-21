@@ -39,7 +39,7 @@ class Profile extends Model
     protected $table = 'profiles';
 
     protected $fillable = [
-        'workers_id',
+        'worker_id',
         'profession_id',
         'address',
         'experience',
