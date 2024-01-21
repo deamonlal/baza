@@ -18,7 +18,7 @@ class PhpDocGenerateCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Generate all phpdoc (from command generate, model, meta) with ide_helper';
 
     /**
      * Execute the console command.
