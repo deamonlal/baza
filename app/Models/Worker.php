@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\Worker\CreatedEvent;
 use App\Http\Filters\FilterInterface;
 use App\Models\Traits\Filterable;
 use Eloquent;
@@ -72,6 +73,13 @@ class Worker extends Model
     ];
 
     protected $guarded = false;
+
+    protected static function booted(): void
+    {
+        static::created(function ($model) {
+            event(new CreatedEvent($model));
+        });
+    }
 
     public function profile(): HasOne
     {

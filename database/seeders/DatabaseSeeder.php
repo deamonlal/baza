@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DepartmentSeeder::class,
             ProfessionSeeder::class,
-            ProfileSeeder::class, // Creates also workers
+            WorkerSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();
